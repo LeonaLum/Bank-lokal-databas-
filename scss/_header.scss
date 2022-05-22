@@ -1,0 +1,23 @@
+h1{
+  background-color: orangered;
+  color: white;
+}
+nav ul{
+  @include flexBox(row, center, space-around);
+  height: 70px;
+  width: 100%;
+  color:white;
+  background-color: orangered;
+
+  li{
+    display: flex;
+    align-items: center;
+    border-bottom: rgba(255, 255, 255, 0) solid 1px;
+    &:hover{
+      border-bottom: white solid 2px;
+    }
+    a{
+      color:white;
+    }
+  }
+}

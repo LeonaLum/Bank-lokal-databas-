@@ -1,0 +1,9 @@
+footer{
+  @include flexBox(row, center, flex-start);
+  background-color: orangered;
+  height: 100px;
+  color:white;
+  .footer-content{
+    margin-left: 20px;
+  }
+}

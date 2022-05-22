@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+  <main>
+    
+       <div class="account-div">
+         <div class="account-details">
+           <p><span class="bold">Kontonummer:</span> <%= account._id %></p>
+           <p> <span class="bold">Kontonamn:</span> <%= account.accountName %></p>
+           <p> <span class="bold">Saldo:</span><%= account.balance %>:-</p>
+         </div>
+
+         <div class="button-div">
+           <a class="del edit-button" data-doc="<%= account._id %>"> 
+            Ta bort konto
+           </a>
+
+           <a class="upd edit-button" 
+           data-i="<%= account._id %>"href="/deposit/<%= account._id %>"> 
+            Sätt in pengar
+           </a>
+
+           <a class="upd edit-button" 
+           data-i="<%= account._id %>"href="/remove/<%= account._id %>"> 
+            Ta ut pengar
+           </a>
+
+          </div>
+
+       </div>
+  
+  </main>
+<%- include("./partials/footer.ejs") %>
+
+ <script>
+   const del = document.querySelector('a.del');
+   del.addEventListener('click', (e) => {
+     const endpoint = `/accounts/${del.dataset.doc}`;
+
+     fetch(endpoint, {
+       method: 'DELETE'
+     })
+      .then((response) => response.json())
+      .then((data) => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+   })
+
+
+
+ </script>
+</body>
+</html>

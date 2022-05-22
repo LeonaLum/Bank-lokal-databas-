@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+  <main>
+    <div class="accounts-list">
+      <div class="list-head">
+        <h2>Konton</h2>
+      </div>
+      <ul class="list-body">
+
+       <% if (accounts.length > 0) { %>
+         <% accounts.forEach(account => { %>
+          <li class="member-card">
+            <a href="/accounts/<%= account._id %>">
+              
+              <h3 class="name"><%= account.accountName %></h3>
+              
+            </a>
+          </li>
+         <% }) %>
+
+       <%} %>
+
+      </ul>
+      
+    
+    
+    </div>
+  
+  </main>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>

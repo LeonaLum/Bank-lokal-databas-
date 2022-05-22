@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+  
+  <main>
+    <form action="/accounts" method="POST" class="reg-form">
+      <h2>Skapa nytt konto:</h2>
+
+      <div class="form-field">
+        <label for="name">Kontonamn:</label>
+        <input type="text" id="accountName" name="accountName" required>
+      </div>
+      <div class="form-field">
+        <label for="favouriteAuthor">Insättning:</label>
+        <input type="number" id="balance" name="balance" required>
+      </div>
+
+      <button>Bekräfta</button>
+    </form>
+  
+  </main>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+  
+  <main>
+    <form class="reg-form" id="updateForm" data-acid="<%= account._id %>">
+      <h2>Ta ut pengar:</h2>
+
+      <div class="form-field">
+        <label for="email">Uttag:</label>
+        <input  type="number" id="remove" name="remove" required>
+      </div>
+      <button id="removeButton">Bekräfta</button>
+    </form>
+  
+  </main>
+<%- include("./partials/footer.ejs") %>
+
+<script>
+  let addButton = document.getElementById("removeButton");
+  let addForm = document.getElementById('removeForm');
+
+  let fieldRemove = document.getElementById('remove');
+  
+
+  addButton.addEventListener("click", (e) => {
+    e.preventDefault();
+   fetch(`http://localhost:3000/remove/${updateForm.dataset.acid}`, {
+       method: 'PATCH',
+       headers: {
+       "Content-Type": "application/json",
+       },
+       body: JSON.stringify({ 
+         "balance": fieldRemove.value
+       }),
+     })
+      .then((response) => console.log(response))
+      .catch(err => console.log(err));
+  })
+  
+</script>
+
+
+
+</body>
+</html>
